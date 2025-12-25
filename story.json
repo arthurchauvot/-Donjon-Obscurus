@@ -1,6 +1,8 @@
 [
   {
     "id": "start",
+    "titre": "Escape Room : Le Donjon",
+    "chapitre": "Entrée du donjon",
     "texte": "Vous entrez dans une pièce sombre.",
     "choix1": "Regarder la porte",
     "cible1": "porte",
@@ -9,12 +11,16 @@
   },
   {
     "id": "porte",
+    "titre": "Escape Room : Le Donjon",
+    "chapitre": "La porte verrouillée",
     "texte": "La porte est verrouillée.",
     "choix1": "Retour",
     "cible1": "start"
   },
   {
     "id": "table",
+    "titre": "Escape Room : Le Donjon",
+    "chapitre": "Découverte d'un objet",
     "texte": "Vous trouvez une clé.",
     "choix1": "Retourner à la porte",
     "cible1": "porte"
