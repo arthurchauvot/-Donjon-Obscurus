@@ -21,17 +21,25 @@ function afficherScene(id) {
   currentId = id;
   localStorage.setItem("currentId", id);
 
-  // Titre dynamique
+  // Titre et sous-titre
   document.title = scene.titre || "Escape Game";
   document.getElementById("page-title").innerText = scene.titre || "Escape Game";
-
-  // Sous-titre / chapitre
   document.getElementById("chapitre-title").innerText = scene.chapitre || "";
 
   // Texte
-  document.getElementById("texte").innerText = scene.texte;
+  const texteDiv = document.getElementById("texte");
+  texteDiv.innerText = scene.texte || "";
+  // Couleur et style du texte
+  texteDiv.style.color = scene.couleurTexte || "#000000";
+  texteDiv.style.fontStyle = scene.styleTexte === "italic" ? "italic" : "normal";
+  texteDiv.style.fontWeight = scene.styleTexte === "bold" ? "bold" : "normal";
+  if(scene.styleTexte && scene.styleTexte.startsWith("font:")){
+    texteDiv.style.fontFamily = scene.styleTexte.replace("font:", "");
+  } else {
+    texteDiv.style.fontFamily = "Arial, sans-serif";
+  }
 
-  // Styles de fond
+  // Fond ou image
   if (scene.imageBackground) {
     document.body.style.backgroundImage = `url(${scene.imageBackground})`;
     document.body.style.backgroundSize = "cover";
