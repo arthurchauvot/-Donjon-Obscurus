@@ -5,10 +5,12 @@ let currentId = localStorage.getItem("currentId") || "start";
 fetch("story.json")
   .then(res => res.json())
   .then(data => {
-    data.forEach(scene => {
-      story[scene.id] = scene;
-    });
+    data.forEach(scene => { story[scene.id] = scene; });
     afficherScene(currentId);
+  })
+  .catch(err => {
+    console.error("Erreur lors du chargement de story.json :", err);
+    document.getElementById("texte").innerText = "Impossible de charger le jeu.";
   });
 
 // Fonction pour afficher une scène
@@ -19,17 +21,27 @@ function afficherScene(id) {
   currentId = id;
   localStorage.setItem("currentId", id);
 
-  // Mise à jour du titre de la page
+  // Titre dynamique
   document.title = scene.titre || "Escape Game";
   document.getElementById("page-title").innerText = scene.titre || "Escape Game";
 
-  // Affichage du sous-titre / chapitre
+  // Sous-titre / chapitre
   document.getElementById("chapitre-title").innerText = scene.chapitre || "";
 
-  // Affichage du texte
+  // Texte
   document.getElementById("texte").innerText = scene.texte;
 
-  // Création des boutons de choix
+  // Styles de fond
+  if (scene.imageBackground) {
+    document.body.style.backgroundImage = `url(${scene.imageBackground})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+  } else {
+    document.body.style.backgroundImage = "none";
+    document.body.style.backgroundColor = scene.couleur || "#ffffff";
+  }
+
+  // Boutons de choix
   const choixDiv = document.getElementById("choix");
   choixDiv.innerHTML = "";
   for (let i = 1; i <= 2; i++) {
@@ -38,38 +50,32 @@ function afficherScene(id) {
     if (label && cible) {
       const btn = document.createElement("button");
       btn.innerText = label;
+      if (scene.styleBouton === "rounded") btn.classList.add("rounded");
       btn.onclick = () => afficherScene(cible);
       choixDiv.appendChild(btn);
     }
   }
 }
 
-
-// QR code scanner minimal
+// QR code scanner en temps réel
 document.getElementById("scanBtn").onclick = () => {
   const qrReader = new Html5Qrcode("qr-reader");
-
   qrReader.start(
     { facingMode: "environment" },
-    {
-      fps: 10, // frames par seconde
-      qrbox: 250 // zone de scan
-    },
+    { fps: 10, qrbox: 250 },
     qrCodeMessage => {
       const qrId = qrCodeMessage.replace("QR:", "");
       if (story[qrId]) {
         afficherScene(qrId);
-        qrReader.stop(); // arrêter le scan après succès
+        qrReader.stop();
         document.getElementById("qr-reader").innerHTML = "";
       } else {
         alert("QR code inconnu : " + qrId);
       }
     },
-    errorMessage => {
-      // peut rester vide
-    }
+    errorMessage => {}
   ).catch(err => {
     console.error("Impossible de démarrer le scan QR", err);
+    alert("Impossible d'accéder à la caméra pour scanner le QR code.");
   });
 };
-
