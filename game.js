@@ -37,40 +37,30 @@ function afficherScene(id) {
 }
 
 // QR code scanner minimal
-document.getElementById("scanBtn").onclick = async () => {
-  // Crée un input type file pour la caméra
-  const input = document.createElement("input");
-  input.type = "file";
-  input.accept = "image/*";
-  input.capture = "environment";
-  input.onchange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+document.getElementById("scanBtn").onclick = () => {
+  const qrReader = new Html5Qrcode("qr-reader");
 
-    // On lit le QR code avec jsQR
-    const img = new Image();
-    img.src = URL.createObjectURL(file);
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-      // jsQR: https://github.com/cozmo/jsQR
-      const code = jsQR(imageData.data, canvas.width, canvas.height);
-      if (code) {
-        const qrId = code.data.replace("QR:", "");
-        if (story[qrId]) {
-          afficherScene(qrId);
-        } else {
-          alert("QR code inconnu : " + qrId);
-        }
+  qrReader.start(
+    { facingMode: "environment" },
+    {
+      fps: 10, // frames par seconde
+      qrbox: 250 // zone de scan
+    },
+    qrCodeMessage => {
+      const qrId = qrCodeMessage.replace("QR:", "");
+      if (story[qrId]) {
+        afficherScene(qrId);
+        qrReader.stop(); // arrêter le scan après succès
+        document.getElementById("qr-reader").innerHTML = "";
       } else {
-        alert("QR code non détecté");
+        alert("QR code inconnu : " + qrId);
       }
-    };
-  };
-  input.click();
+    },
+    errorMessage => {
+      // peut rester vide
+    }
+  ).catch(err => {
+    console.error("Impossible de démarrer le scan QR", err);
+  });
 };
+
