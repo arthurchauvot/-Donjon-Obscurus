@@ -1,41 +1,80 @@
 [
   {
-    "id": "start",
-    "titre": "Escape Room : Le Donjon",
-    "chapitre": "Entrée du donjon",
-    "texte": "Vous entrez dans une pièce sombre.",
-    "choix1": "Regarder la porte",
-    "cible1": "porte",
-    "choix2": "Inspecter la table",
-    "cible2": "table",
-    "couleur": "#f0f0f0",
-    "couleurTexte": "#FFFFFF",
-    "styleBouton": "rounded",
-    "styleTexte": "italic",
-    "imageBackground": "6322.jpg"
+    "chapitreId": "entrée_donjon",
+    "SETUP": {
+      "titre": "Escape Room : Le Donjon",
+      "sousTitre": "Entrée du donjon",
+      "couleurFond": "#f0f0f0",
+      "imageFond": "",
+      "couleurTitre": "#333333",
+      "couleurSousTitre": "#666666",
+      "couleurTexte": "#000000",
+      "styleTitre": "bold",
+      "styleSousTitre": "italic",
+      "styleTexte": "normal"
+    },
+    "scenes": [
+      {
+        "id": "start",
+        "texte": "Vous entrez dans une pièce sombre.",
+        "choix": [
+          { "label": "Regarder la porte", "cible": "porte" },
+          { "label": "Inspecter la table", "cible": "table" }
+        ]
+      },
+      {
+        "id": "porte",
+        "texte": "La porte est verrouillée.",
+        "choix": [
+          { "label": "Retour", "cible": "start" }
+        ]
+      },
+      {
+        "id": "table",
+        "texte": "Vous trouvez une clé.",
+        "choix": [
+          { "label": "Retourner à la porte", "cible": "porte" }
+        ]
+      }
+    ]
   },
   {
-    "id": "porte",
-    "titre": "Escape Room : Le Donjon",
-    "chapitre": "La porte verrouillée",
-    "texte": "La porte est verrouillée.",
-    "choix1": "Retour",
-    "cible1": "start",
-    "couleur": "#ffdddd",
-    "couleurTexte": "#660000",
-    "styleBouton": "rounded",
-    "styleTexte": "bold"
-  },
-  {
-    "id": "table",
-    "titre": "Escape Room : Le Donjon",
-    "chapitre": "Découverte d'un objet",
-    "texte": "Vous trouvez une clé.",
-    "choix1": "Retourner à la porte",
-    "cible1": "porte",
-    "couleur": "#ddffdd",
-    "couleurTexte": "#003300",
-    "styleBouton": "rounded",
-    "styleTexte": "font:Courier New"
+    "chapitreId": "escalier",
+    "SETUP": {
+      "titre": "Escape Room : Le Donjon",
+      "sousTitre": "L’escalier",
+      "couleurFond": "#ddeeff",
+      "imageFond": "",
+      "couleurTitre": "#222222",
+      "couleurSousTitre": "#444444",
+      "couleurTexte": "#000088",
+      "styleTitre": "bold",
+      "styleSousTitre": "normal",
+      "styleTexte": "italic"
+    },
+    "scenes": [
+      {
+        "id": "debut_escalier",
+        "texte": "Vous montez un escalier étroit et sombre.",
+        "choix": [
+          { "label": "Aller à gauche", "cible": "chambre1" },
+          { "label": "Aller à droite", "cible": "chambre2" }
+        ]
+      },
+      {
+        "id": "chambre1",
+        "texte": "Vous arrivez dans une petite chambre.",
+        "choix": [
+          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+        ]
+      },
+      {
+        "id": "chambre2",
+        "texte": "Vous trouvez un coffre fermé.",
+        "choix": [
+          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+        ]
+      }
+    ]
   }
 ]
