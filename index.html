@@ -1,8 +1,8 @@
-<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
   <meta charset="UTF-8">
   <title>Escape Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,8 @@
   <div id="texte"></div>
   <div id="choix"></div>
   <button id="scanBtn">Scanner un QR code</button>
+  <div id="qr-reader" style="width:100%; max-width:400px; margin-top:10px;"></div>
+
 
   <script src="game.js"></script>
 </body>
