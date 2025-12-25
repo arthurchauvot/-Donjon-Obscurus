@@ -39,11 +39,13 @@ function afficherScene(id) {
     texteDiv.style.fontFamily = "Arial, sans-serif";
   }
 
-  // Fond ou image
+  // Fond ou image (centré et croppé)
   if (scene.imageBackground) {
     document.body.style.backgroundImage = `url(${scene.imageBackground})`;
+    document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
   } else {
     document.body.style.backgroundImage = "none";
     document.body.style.backgroundColor = scene.couleur || "#ffffff";
