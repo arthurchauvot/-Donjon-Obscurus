@@ -8,9 +8,11 @@
     "cible1": "porte",
     "choix2": "Inspecter la table",
     "cible2": "table",
-    "couleur": "#f00000",
+    "couleur": "#f0f0f0",
+    "couleurTexte": "#000000",
     "styleBouton": "rounded",
-    "imageBackground": "6322.Jpg"
+    "styleTexte": "italic",
+    "imageBackground": "6322.jpg"
   },
   {
     "id": "porte",
@@ -20,7 +22,9 @@
     "choix1": "Retour",
     "cible1": "start",
     "couleur": "#ffdddd",
-    "styleBouton": "rounded"
+    "couleurTexte": "#660000",
+    "styleBouton": "rounded",
+    "styleTexte": "bold"
   },
   {
     "id": "table",
@@ -30,6 +34,8 @@
     "choix1": "Retourner à la porte",
     "cible1": "porte",
     "couleur": "#ddffdd",
-    "styleBouton": "rounded"
+    "couleurTexte": "#003300",
+    "styleBouton": "rounded",
+    "styleTexte": "font:Courier New"
   }
 ]
