@@ -1,0 +1,4 @@
+﻿id;texte;choix1;cible1;choix2;cible2
+start;Vous entrez dans une pièce sombre.;Regarder la porte;porte;Inspecter la table;table
+porte;La porte est verrouillée.;Retour;start;;
+table;Vous trouvez une clé.;Retourner à la porte;porte;;

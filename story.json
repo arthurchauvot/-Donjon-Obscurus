@@ -1,0 +1,11 @@
+[
+    {
+        "id;texte;choix1;cible1;choix2;cible2": "start;Vous entrez dans une pièce sombre.;Regarder la porte;porte;Inspecter la table;table"
+    },
+    {
+        "id;texte;choix1;cible1;choix2;cible2": "porte;La porte est verrouillée.;Retour;start;;"
+    },
+    {
+        "id;texte;choix1;cible1;choix2;cible2": "table;Vous trouvez une clé.;Retourner à la porte;porte;;"
+    }
+]
