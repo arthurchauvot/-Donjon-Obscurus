@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script src="https://unpkg.com/html5-qrcode"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
   <meta charset="UTF-8">
   <title>Escape Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Librairie QR Code -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    #choix button { margin: 5px; padding: 10px; font-size: 16px; }
-    #scanBtn { margin-top: 20px; padding: 10px; font-size: 16px; background: #4CAF50; color: white; border: none; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      transition: background 0.5s;
+    }
+    #page-title {
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+    #chapitre-title {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #666;
+    }
+    #texte {
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+    #choix button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .rounded { border-radius: 10px; }
+    #scanBtn {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #qr-reader { width: 100%; max-width: 400px; margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -18,7 +54,7 @@
   <div id="texte"></div>
   <div id="choix"></div>
   <button id="scanBtn">Scanner un QR code</button>
-  <div id="qr-reader" style="width:100%; max-width:400px; margin-top:10px;"></div>
+  <div id="qr-reader"></div>
 
   <script src="game.js"></script>
 </body>
