@@ -7,7 +7,10 @@
     "choix1": "Regarder la porte",
     "cible1": "porte",
     "choix2": "Inspecter la table",
-    "cible2": "table"
+    "cible2": "table",
+    "couleur": "#f0f0f0",
+    "styleBouton": "rounded",
+    "imageBackground": ""
   },
   {
     "id": "porte",
@@ -15,7 +18,9 @@
     "chapitre": "La porte verrouillée",
     "texte": "La porte est verrouillée.",
     "choix1": "Retour",
-    "cible1": "start"
+    "cible1": "start",
+    "couleur": "#ffdddd",
+    "styleBouton": "rounded"
   },
   {
     "id": "table",
@@ -23,6 +28,8 @@
     "chapitre": "Découverte d'un objet",
     "texte": "Vous trouvez une clé.",
     "choix1": "Retourner à la porte",
-    "cible1": "porte"
+    "cible1": "porte",
+    "couleur": "#ddffdd",
+    "styleBouton": "rounded"
   }
 ]
