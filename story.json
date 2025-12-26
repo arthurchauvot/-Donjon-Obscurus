@@ -5,7 +5,7 @@
       "titre": "Escape Room : Le Donjon",
       "sousTitre": "Entrée du donjon",
       "couleurFond": "#f0f0f0",
-      "imageFond": "",
+      "imageFond": "6322.jpg",
       "couleurTitre": "#333333",
       "couleurSousTitre": "#666666",
       "couleurTexte": "#000000",
@@ -18,22 +18,34 @@
         "id": "start",
         "texte": "Vous entrez dans une pièce sombre.",
         "choix": [
-          { "label": "Regarder la porte", "cible": "porte" },
-          { "label": "Inspecter la table", "cible": "table" }
+          {
+            "label": "Regarder la porte",
+            "cible": "porte"
+          },
+          {
+            "label": "Inspecter la table",
+            "cible": "table"
+          }
         ]
       },
       {
         "id": "porte",
         "texte": "La porte est verrouillée.",
         "choix": [
-          { "label": "Retour", "cible": "start" }
+          {
+            "label": "Retour",
+            "cible": "debut_escalier"
+          }
         ]
       },
       {
         "id": "table",
-        "texte": "Vous trouvez une clé.",
+        "texte": "Vous trouvez une clé",
         "choix": [
-          { "label": "Retourner à la porte", "cible": "porte" }
+          {
+            "label": "Retourner à la porte",
+            "cible": "porte"
+          }
         ]
       }
     ]
@@ -42,37 +54,49 @@
     "chapitreId": "escalier",
     "SETUP": {
       "titre": "Escape Room : Le Donjon",
-      "sousTitre": "L’escalier",
-      "couleurFond": "#ddeeff",
-      "imageFond": "",
-      "couleurTitre": "#222222",
-      "couleurSousTitre": "#444444",
-      "couleurTexte": "#000088",
+      "sousTitre": "L'escalier",
+      "couleurFond": "#f0f0f1",
+      "imageFond": "6322.jpg",
+      "couleurTitre": "#333333",
+      "couleurSousTitre": "#666666",
+      "couleurTexte": "#000000",
       "styleTitre": "bold",
-      "styleSousTitre": "normal",
-      "styleTexte": "italic"
+      "styleSousTitre": "italic",
+      "styleTexte": "normal"
     },
     "scenes": [
       {
         "id": "debut_escalier",
-        "texte": "Vous montez un escalier étroit et sombre.",
+        "texte": "Vous montez un escalier étroit et sombre",
         "choix": [
-          { "label": "Aller à gauche", "cible": "chambre1" },
-          { "label": "Aller à droite", "cible": "chambre2" }
+          {
+            "label": "Aller à gauche",
+            "cible": "chambre1"
+          },
+          {
+            "label": "Aller à droite",
+            "cible": "chambre2"
+          }
         ]
       },
       {
         "id": "chambre1",
         "texte": "Vous arrivez dans une petite chambre.",
         "choix": [
-          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+          {
+            "label": "Retourner à l'escalier",
+            "cible": "debut_escalier"
+          }
         ]
       },
       {
         "id": "chambre2",
         "texte": "Vous trouvez un coffre fermé.",
         "choix": [
-          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+          {
+            "label": "Retourner à l'escalier",
+            "cible": "start"
+          }
         ]
       }
     ]
