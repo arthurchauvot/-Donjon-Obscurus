@@ -68,6 +68,24 @@ function afficherScene(sceneId) {
     choixDiv.appendChild(btn);
   });
 
+  document.getElementById("codeBtn").onclick = () => {
+  const codeInput = document.getElementById("codeInput").value.trim();
+  const scene = scenesMap[currentSceneId];
+  
+  if (scene.codes && scene.codes.length > 0) {
+    const matched = scene.codes.find(c => c.code === codeInput);
+    if (matched) {
+      afficherScene(matched.cible);
+      document.getElementById("codeInput").value = "";
+    } else {
+      alert("Code incorrect !");
+    }
+  } else {
+    alert("Aucun code n’est valide pour cette scène.");
+  }
+};
+
+
   // Ajouter les entrées du journal si présentes
   if (scene.journal && scene.journal.length > 0) {
     scene.journal.forEach(entry => {
