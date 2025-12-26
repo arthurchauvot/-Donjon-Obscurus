@@ -87,14 +87,18 @@ function afficherScene(id) {
   });
 
   /* --- Journal automatique --- */
-  if (scene.journal) {
-    scene.journal.forEach(entry => {
-      if (!journal.includes(entry)) {
-        journal.push(entry);
-      }
-    });
-    localStorage.setItem("journal", JSON.stringify(journal));
-  }
+   if (scene.journal) {
+     scene.journal.forEach(entry => {
+       const exists = journal.some(j =>
+         j.texte === entry.texte && j.image === entry.image
+       );
+       if (!exists) {
+         journal.push(entry);
+       }
+     });
+     localStorage.setItem("journal", JSON.stringify(journal));
+   }
+
 }
 
 /* ==========================
