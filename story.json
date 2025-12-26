@@ -5,47 +5,56 @@
       "titre": "Escape Room : Le Donjon",
       "sousTitre": "Entrée du donjon",
       "couleurFond": "#f0f0f0",
-      "imageFond": "6322.jpg",
+      "imageFond": "",
       "couleurTitre": "#333333",
       "couleurSousTitre": "#666666",
       "couleurTexte": "#000000",
       "styleTitre": "bold",
       "styleSousTitre": "italic",
-      "styleTexte": "normal"
+      "styleTexte": "normal",
+      "styleBouton": "rounded"
     },
     "scenes": [
       {
         "id": "start",
         "texte": "Vous entrez dans une pièce sombre.",
         "choix": [
-          {
-            "label": "Regarder la porte",
-            "cible": "porte"
-          },
-          {
-            "label": "Inspecter la table",
-            "cible": "table"
-          }
+          { "label": "Regarder la porte", "cible": "porte" },
+          { "label": "Inspecter la table", "cible": "table" }
         ]
       },
       {
         "id": "porte",
         "texte": "La porte est verrouillée.",
+        "journal": ["Vous avez découvert que la porte est verrouillée."],
         "choix": [
-          {
-            "label": "Retour",
-            "cible": "debut_escalier"
-          }
+          { "label": "Retour", "cible": "start" }
+        ],
+        "codes": [
+          { "code": "OUVREPORTE", "cible": "secret_corridor" }
         ]
       },
       {
         "id": "table",
-        "texte": "Vous trouvez une clé",
+        "texte": "Vous trouvez une clé sur la table.",
+        "journal": ["Vous avez trouvé une clé sur la table."],
         "choix": [
-          {
-            "label": "Retourner à la porte",
-            "cible": "porte"
-          }
+          { "label": "Retourner à la porte", "cible": "porte" }
+        ]
+      },
+      {
+        "id": "secret_corridor",
+        "texte": "Un corridor secret s’ouvre devant vous.",
+        "journal": ["Vous avez découvert le corridor secret !"],
+        "choix": [
+          { "label": "Avancer dans le corridor", "cible": "fin_entree" }
+        ]
+      },
+      {
+        "id": "fin_entree",
+        "texte": "Vous avez traversé l’entrée du donjon.",
+        "choix": [
+          { "label": "Monter l’escalier", "cible": "debut_escalier" }
         ]
       }
     ]
@@ -54,49 +63,61 @@
     "chapitreId": "escalier",
     "SETUP": {
       "titre": "Escape Room : Le Donjon",
-      "sousTitre": "L'escalier",
-      "couleurFond": "#f0f0f1",
-      "imageFond": "6322.jpg",
-      "couleurTitre": "#333333",
-      "couleurSousTitre": "#666666",
-      "couleurTexte": "#000000",
+      "sousTitre": "L’escalier",
+      "couleurFond": "#ddeeff",
+      "imageFond": "",
+      "couleurTitre": "#222222",
+      "couleurSousTitre": "#444444",
+      "couleurTexte": "#000088",
       "styleTitre": "bold",
-      "styleSousTitre": "italic",
-      "styleTexte": "normal"
+      "styleSousTitre": "normal",
+      "styleTexte": "italic",
+      "styleBouton": "rounded"
     },
     "scenes": [
       {
         "id": "debut_escalier",
-        "texte": "Vous montez un escalier étroit et sombre",
+        "texte": "Vous montez un escalier étroit et sombre.",
         "choix": [
-          {
-            "label": "Aller à gauche",
-            "cible": "chambre1"
-          },
-          {
-            "label": "Aller à droite",
-            "cible": "chambre2"
-          }
+          { "label": "Aller à gauche", "cible": "chambre1" },
+          { "label": "Aller à droite", "cible": "chambre2" }
         ]
       },
       {
         "id": "chambre1",
-        "texte": "Vous arrivez dans une petite chambre.",
+        "texte": "Vous arrivez dans une petite chambre avec un coffre.",
+        "journal": ["Vous avez trouvé la petite chambre."],
         "choix": [
-          {
-            "label": "Retourner à l'escalier",
-            "cible": "debut_escalier"
-          }
+          { "label": "Ouvrir le coffre", "cible": "coffre1" },
+          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+        ],
+        "codes": [
+          { "code": "COFFRE1", "cible": "coffre1" }
+        ]
+      },
+      {
+        "id": "coffre1",
+        "texte": "Le coffre contient un parchemin ancien.",
+        "journal": ["Vous avez trouvé un parchemin ancien dans le coffre."],
+        "choix": [
+          { "label": "Retourner à la chambre", "cible": "chambre1" }
         ]
       },
       {
         "id": "chambre2",
-        "texte": "Vous trouvez un coffre fermé.",
+        "texte": "Vous trouvez un escalier en colimaçon menant vers le sommet.",
+        "journal": ["Vous avez découvert l’escalier en colimaçon."],
         "choix": [
-          {
-            "label": "Retourner à l'escalier",
-            "cible": "start"
-          }
+          { "label": "Monter l’escalier", "cible": "sommet" },
+          { "label": "Retourner à l’escalier", "cible": "debut_escalier" }
+        ]
+      },
+      {
+        "id": "sommet",
+        "texte": "Vous arrivez au sommet du donjon. La vue est magnifique !",
+        "journal": ["Vous avez atteint le sommet du donjon."],
+        "choix": [
+          { "label": "Redescendre", "cible": "debut_escalier" }
         ]
       }
     ]
