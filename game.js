@@ -109,11 +109,28 @@ document.getElementById("journalBtn").onclick = () => {
   const content = document.getElementById("journalContent");
   content.innerHTML = "";
 
-  journal.forEach((j, i) => {
-    const p = document.createElement("p");
-    p.innerText = `${i + 1}. ${j}`;
-    content.appendChild(p);
-  });
+   journal.forEach((entry, i) => {
+     const container = document.createElement("div");
+     container.style.marginBottom = "20px";
+
+     if (entry.texte) {
+       const p = document.createElement("p");
+       p.innerText = entry.texte;
+       container.appendChild(p);
+     }
+
+     if (entry.image) {
+       const img = document.createElement("img");
+       img.src = entry.image;
+       img.style.maxWidth = "100%";
+       img.style.borderRadius = "8px";
+       img.style.marginTop = "8px";
+       container.appendChild(img);
+     }
+
+     content.appendChild(container);
+   });
+
 
   document.getElementById("journalOverlay").style.display = "block";
 };
